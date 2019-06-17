@@ -9,6 +9,7 @@ Created on Sat Jun 15 20:16:08 2019
 
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy.linalg
 
 x = np.arange(-1, 1, 0.01)[:,np.newaxis]
 
@@ -57,7 +58,13 @@ plt.show()
 #X[:, ii, np.newaxis]  X[np.newaxis, ii, :]
 #X[:, [ii] ]高维度可能存在问题
 
+# LS
+theta2 = scipy.linalg.pinv(X.T @ X ) @ X.T @ y
+y_pre2 = X @ theta2
+plt.scatter(x, y)
+plt.scatter(x, y_pre2)
 
+plt.show()
 
 
 
